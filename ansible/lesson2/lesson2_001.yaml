@@ -1,0 +1,19 @@
+---
+ - name: lesson2
+   hosts: nodes
+   become: yes
+   become_method: sudo
+   become_user: root
+
+   vars_files:
+       - userlist.yaml
+
+   tasks:
+       - name: "create users"
+         no_log: True
+         user:
+             name: "{{ item.user }}"
+             password: "{{ item.pass | password_hash('sha512') }}"
+             state: present
+             comment: "{{ item.user }}@example.com"
+         loop: "{{ userlist }}"
