@@ -1,0 +1,5 @@
+---
+    - name: "Create file"
+      copy:
+         dest: "/var/www/html/index.html"
+         content: "Welcome to my web server"
