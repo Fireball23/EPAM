@@ -1,0 +1,12 @@
+---
+ - name: lesson2
+   hosts: nodes
+   become: yes
+   become_method: sudo
+   become_user: root
+
+   roles:
+        - apache
+        - port_allowed
+        - create_file
+          
